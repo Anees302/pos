@@ -16,10 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('/showLogin',[AuthController::class,'showLogin'])->name('showLogin');
-Route::get('/create',[AuthController::class,'create'])->name('create');
-Route::post('/register',[AuthController::class,'register'])->name('register');
-Route::post('/login',[AuthController::class,'login'])->name('login');
+
+Route::controller(AuthController::class)->group(function(){
+Route::get('/showLogin','showLogin')->name('showLogin');
+Route::get('/create','create')->name('create');
+Route::post('/register','register')->name('register');
+Route::post('/login','login')->name('login');
+Route::post('/logout','logout')->name('logout');
+
+});
+
 Route::get('/dashboard',function (){return view('dashboard');});
-Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 
