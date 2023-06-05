@@ -7,6 +7,13 @@
 
 @section('content')
 <form action="{{ route('login') }}" method="POST">
+
+@if ($errors->has('error'))
+    <div class="alert alert-danger">
+        {{ $errors->first('error') }}
+    </div>
+@endif
+
     @csrf
     <div class="form-outline form-white mb-4 mt-5">
             <input name="email" placeholder="Enter email" type="email" id="typeEmailX" class="form-control form-control-lg" />

@@ -29,7 +29,9 @@ public function showLogin(){
         }
         else
 
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("showLogin")->withErrors([
+            'error' => 'Opps! You have entered invalid credentials.',
+        ]);
 
 
     }
