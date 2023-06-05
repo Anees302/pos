@@ -3,6 +3,10 @@
 @section('content')
 
 
+@php
+$username=$name;
+@endphp
+
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item active">
