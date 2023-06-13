@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,13 @@ Route::post('/logout','logout')->name('logout');
 
 });
 
-Route::get('/dashboard',function (){return view('dashboard');});
+Route::get('/dashboard',function (){return view('dashboard');})->name('dashboard');
 
+Route::controller(ProductController::class)->group(function (){
+Route::get('/products','index')->name('products.index');
+Route::get('/products/create','create')->name('products.create');
+Route::post('/products/store','store')->name('products.store');
+Route::get('/products/edit/{product}','edit')->name('products.edit');
+Route::put('/products/{product}','update')->name('products.update');
+Route::delete('/products/{product}','destroy')->name('products.delete');
+});

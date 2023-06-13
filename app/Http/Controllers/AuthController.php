@@ -24,7 +24,7 @@ public function showLogin(){
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return view('dashboard')->with('name',auth()->user()->name);
+            return redirect()->route('dashboard')->with('name',auth()->user()->name);
 
         }
         else

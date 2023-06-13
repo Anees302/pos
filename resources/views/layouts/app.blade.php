@@ -7,19 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>RC-POS - Home</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
   </head>
   <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-
-
-
-
-
-        <a class="navbar-brand mr-1" href="index.html">{{ $username }}</a>
+        <a class="navbar-brand mr-1" href="{{ route('dashboard') }}">Admin</a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
           <i class="fa fa-bars"></i>
         </button>
@@ -97,24 +91,110 @@
           </li>
         </ul>
       </nav>
-      <div id="wrapper">
+<div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="sidebar navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                  <i class="fa fa-fw fa-home"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li class="nav-item  {{ Request::is('products.index') ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('products.index') }}">
+                  <i class="fa fa-fw fa-tag"></i>
+                  <span>Products</span>
+                </a>
+              </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="retail-dashboard.html">
+                <i class="fa fa-fw fa-line-chart"></i>
+                <span>Retail Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sales-reports.html">
+                <i class="fa fa-fw fa-bar-chart"></i>
+                <span>Sales Reports</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="inventory-reports.html">
+                <i class="fa fa-fw fa-tags"></i>
+                <span>Inventory Reports</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="payment-reports.html">
+                <i class="fa fa-fw fa-money"></i>
+                <span>Payment Reports</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sales.html">
+                <i class="fa fa-fw fa-table"></i>
+                <span>Check Sales</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" data-toggle="modal" data-target="#addSaleModal">
+                <i class="fa fa-fw fa-plus"></i>
+                <span>Record New Sale</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('products.create') }}">
+                <i class="fa fa-fw fa-tags"></i>
+                <span>Add New Product</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product-brands.html">
+                <i class="fa fa-fw fa-industry"></i>
+                <span>Product Brands</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product-vendors.html">
+                <i class="fa fa-fw fa-users"></i>
+                <span>Product Vendors</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="history.html">
+                <i class="fa fa-fw fa-calendar"></i>
+                <span>History</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="export-record.html">
+                <i class="fa fa-fw fa-external-link"></i>
+                <span>Export Record</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="general-settings.html">
+                <i class="fa fa-fw fa-cogs"></i>
+                <span>General Settings</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="help.html">
+                <i class="fa fa-fw fa-life-ring"></i>
+                <span>Help</span></a>
+            </li>
+          </ul>
+
+        <div id="content-wrapper">
+            <div class="container-fluid">
+              <!-- Content code here -->
+              @yield('content')
+            </div>
+
      <!-- Sticky Footer -->
      <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto ">
             <br><br><br>
-            {{-- <small class="text-muted">
-              You're using  v1.0 of this software. <a href="#"> <i class="fa fa-external-link"></i> Check for Updates</a>. In order to report a bug, please create an issue <a href="https://github.com/vruqa/rc-pos/issues">here.</a>
-              <br><br><br>
-              <a href="#">Legal</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Advertisements</a>
-            </small> --}}
+
             <br><br><br>
             <span>Copyright &copy; 2013-2018 <a href="#">Blackrock Digital, LLC.</a>, 2018 <a href="https://vruqa.github.io">Vruqa Designs</a>, 2018 <a href="https://appzaib.github.io">Appzaib</a>. All rights reserved.</span>
             <br><br><br>
           </div>
         </div>
       </footer>
-    @yield('content')
+
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
